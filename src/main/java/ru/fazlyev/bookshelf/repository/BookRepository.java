@@ -12,11 +12,9 @@ public interface BookRepository extends MongoRepository<Book, String> {
 
     List<Book> findByGenre_Name(String name);
 
-    List<Book> findByReadIsFalse();
+    List<Book> findByIsReadIsFalse();
 
-    List<Book> findByReadIsTrue();
+    List<Book> findByIsReadIsTrue();
 
-    List<Book> findByLikedIsTrue();
-
-    List<Book> findByLikedIsFalse();
+    List<Book> findByIsLikedIsTrue();
 }
