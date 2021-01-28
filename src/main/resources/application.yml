@@ -1,0 +1,16 @@
+
+spring:
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      database: bookshelf
+
+logging:
+  level:
+    ROOT: ERROR
+
+mongock:
+  runner-type: "InitializingBean"
+  change-logs-scan-package:
+    - ru.fazlyev.bookshelf.mongock.changelog
