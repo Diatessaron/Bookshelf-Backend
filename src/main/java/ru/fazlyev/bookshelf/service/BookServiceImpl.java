@@ -1,6 +1,7 @@
 package ru.fazlyev.bookshelf.service;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import ru.fazlyev.bookshelf.domain.Book;
 import ru.fazlyev.bookshelf.dto.BookRequest;
 import ru.fazlyev.bookshelf.repository.BookRepository;
@@ -15,41 +16,49 @@ public class BookServiceImpl implements BookService {
         this.bookRepository = bookRepository;
     }
 
+    @Transactional(readOnly = true)
     @Override
     public List<Book> findByTitle(String title) {
         return bookRepository.findByTitle(title);
     }
 
+    @Transactional(readOnly = true)
     @Override
     public List<Book> findByAuthor_Name(String name) {
         return bookRepository.findByAuthor_Name(name);
     }
 
+    @Transactional(readOnly = true)
     @Override
     public List<Book> findByGenre_Name(String name) {
         return bookRepository.findByGenre_Name(name);
     }
 
+    @Transactional(readOnly = true)
     @Override
     public List<Book> findByReadIsFalse() {
         return bookRepository.findByIsReadIsFalse();
     }
 
+    @Transactional(readOnly = true)
     @Override
     public List<Book> findByReadIsTrue() {
         return bookRepository.findByIsReadIsTrue();
     }
 
+    @Transactional(readOnly = true)
     @Override
     public List<Book> findByLikedIsTrue() {
         return bookRepository.findByIsLikedIsTrue();
     }
 
+    @Transactional(readOnly = true)
     @Override
     public List<Book> findAll() {
         return bookRepository.findAll();
     }
 
+    @Transactional
     @Override
     public boolean setLiked(BookRequest bookRequest) {
         final Book book = bookRepository.findById(bookRequest.getId()).orElseThrow(
@@ -60,6 +69,7 @@ public class BookServiceImpl implements BookService {
         return true;
     }
 
+    @Transactional
     @Override
     public boolean setRead(BookRequest bookRequest) {
         final Book book = bookRepository.findById(bookRequest.getId()).orElseThrow(
