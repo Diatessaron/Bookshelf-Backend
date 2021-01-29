@@ -18,7 +18,7 @@ public class AuthorController {
         this.authorService = authorService;
     }
 
-    @GetMapping("/bookshelf/api/author/{name}")
+    @GetMapping("/bookshelf/api/authors/{name}")
     public ResponseEntity<List<Author>> findByName(@PathVariable String name){
         return ResponseEntity.status(HttpStatus.OK).body(authorService.findByName(name));
     }
