@@ -18,7 +18,7 @@ public class GenreController {
         this.genreService = genreService;
     }
 
-    @GetMapping("/bookshelf/api/genre/{name}")
+    @GetMapping("/bookshelf/api/genres/{name}")
     public ResponseEntity<Genre> findByName(@PathVariable String name){
         return ResponseEntity.of(genreService.findByName(name));
     }
